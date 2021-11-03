@@ -1,0 +1,178 @@
+import React, { Suspense } from "react";
+import { withRouter } from "react-router-dom";
+import { GET_USER, DELETE_USER, USER_EMAIL_QUERY } from '../../../graphql/Admin/user';
+import { client } from "../../../apollo";
+import { Table, Button, Icon, Popconfirm } from 'antd';
+import { Alert_msg } from '../../Comman/alert_msg';
+import Search from "antd/lib/input/Search";
+// const EmailSearch = React.lazy(() => import('./EmailSearch'));
+
+class UserTable extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            dataSource: [],
+            search_user: [],
+            loading: false,
+            pagination: {
+                pageSize: 10,
+                current: 1,
+                total: 0,
+                simple: true,
+            }
+        };
+    }
+    componentDidMount() {
+        this.fetch_user();
+    }
+    handleTableChange = async pagination => {
+        const pager = { ...pagination };
+        pager.current = pagination.current;
+        this.setState({ loading: true });
+
+        await client.query({
+            query: GET_USER,
+            variables: { limit: pager.pageSize, page: pager.current, role: "1" },
+            fetchPolicy: 'no-cache',
+        }).then(result => {
+            console.log(result.data);
+            const pagination = { ...this.state.pagination };
+            pagination.total = result.data.get_user.pageInfo.totalDocs;
+            pagination.current = result.data.get_user.pageInfo.page;
+            console.log(pagination);
+            this.setState({ pagination, loading: false, dataSource: result.data.get_user.data });
+        });
+    };
+
+    fetch_user = async (visible) => {
+        this.setState({ loading: true });
+
+        await client.query({
+            query: GET_USER,
+            variables: { limit: this.state.pagination.pageSize, page: this.state.pagination.current, role: "1" },
+            fetchPolicy: 'no-cache',
+        }).then(result => {
+            const pagination = { ...this.state.pagination };
+            pagination.total = result.data.get_user.pageInfo.totalDocs;
+            this.setState({ loading: false, pagination, dataSource: result.data.get_user.data });
+        });
+    }
+
+    handleDelete = async (_id) => {
+        console.log(_id);
+        await client.mutate({
+            mutation: DELETE_USER,
+            variables: { _id: _id },
+        }).then((result, loading, error) => {
+            Alert_msg(result.data.deleteDetails);
+            if (result.data.deleteDetails.status === 'success') {
+                this.fetch_user();
+            }
+        });
+    }
+
+    onFilter = async (value) => {
+        console.log(value.target.value);
+        var datas = { delete: 0, role: 1, $or: [{ 'name': { $regex: '.*' + value.target.value + '.*',$options:'i'  } }, { 'email': { $regex: '.*' + value.target.value + '.*',$options:'i'  } }, { 'phone_no': { $regex: '.*' + value.target.value + '.*',$options:'i'  } }] }
+        await client.query({
+            query: USER_EMAIL_QUERY,
+            variables: { data: datas },
+            fetchPolicy: 'no-cache',
+        }).then(result => {
+            this.setState({ dataSource: result?.data?.user_search });
+        });
+    }
+    render() {
+        const { dataSource } = this.state;
+
+        const columns = [
+            {
+                title: "Name",
+                width: '20%',
+                render: (text, record) => {
+                    return <span title="Name">{record.name}</span>;
+                }
+
+            },
+            {
+                title: () => {
+                    return <div>
+                        <div className="d-block">
+                            <div>
+                                Email
+                             </div>
+                            {/* <>
+                                <Suspense fallback={<div>.......</div>}>
+                                    <EmailSearch role='1' value='email' placeholder='Enter Email'  passedFunction={this.onFilter}/>
+                                </Suspense>
+                            </> */}
+                        </div>
+                    </div>
+                },
+                width: '20%',
+                render: (text, record) => {
+                    return <span title="Email" style={{ wordBreak: "keep-all" }}>{record.email}</span>;
+                }
+
+            },
+            {
+                title: () => {
+                    return <div>
+                        <div>
+                            Phone Number
+                             </div>
+                        {/* <>
+                                <Suspense fallback={<div>.......</div>}>
+                                    <EmailSearch role='1' value='phone_no' placeholder='Enter Phone Number' passedFunction={this.onFilter}/>
+                                </Suspense>
+                            </> */}
+                    </div>
+                },
+                width: '20%',
+                render: (text, record) => {
+                    return <span title="Phone Number">{record.phone_no}</span>;
+                }
+
+            },
+            {
+                title: "Action",
+                dataIndex: 'operation',
+                render: (text, record) =>
+                    this.state.dataSource.length >= 1 ? (
+                        <span title="...." className="d-flex d-sm-inline justify-content-around">
+                            <span className='cursor_point' onClick={() => { this.props.history.push(`/admin-user/add/${record._id}`); }}><Icon type="edit" theme="twoTone" twoToneColor="#52c41a" className='mx-3 f_25' /></span>
+                            <Popconfirm title="Sure to delete the user ?" onConfirm={() => this.handleDelete(record._id)}>
+                                <Icon type="delete" theme="twoTone" twoToneColor="#52c41a" className='f_25' />
+                            </Popconfirm>
+                        </span>
+                    ) : null,
+            },
+        ];
+
+
+        return (
+            <div>
+                <div className='mx-2 mx-sm-0 my-3'>
+                    <Button type="primary" onClick={() => { this.props.history.push('/admin-user/add'); }}>
+                        Add User
+                    </Button>
+                    <Search className='mt-3' size="large" placeholder="search" onKeyUp={(event) => { this.onFilter(event) }} loading={false} />
+                </div>
+                <div id="no-more-tables">
+                    <Table
+                        rowClassName={() => 'editable-row'}
+                        className='table_shadow'
+                        dataSource={dataSource}
+                        columns={columns}
+                        size="middle"
+                        pagination={this.state.pagination}
+                        onChange={this.handleTableChange}
+                        loading={this.state.loading}
+                    />
+                </div>
+            </div>
+        );
+    }
+}
+
+export default withRouter(UserTable);

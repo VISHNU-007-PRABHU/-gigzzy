@@ -1,0 +1,299 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+body {
+    font-family: "BalooTamma2", cursive !important;
+}
+.primary_color {
+    color: #07cb79 !important;
+}
+
+@media (max-width: 1023px) and(orientation: landscape) {
+    .froms {
+        height: auto !important;
+        padding: 3em !important;
+    }
+}
+
+.input_border {
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-radius: 0px !important;
+    background-color: #ffffff !important;
+}
+
+.input_border .ant-input {
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-radius: 0px !important;
+    background-color: #ffffff !important;
+}
+
+.ant-input:focus {
+    border-color: #e9e9ea;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.mw-450 {
+    max-width: 450px;
+}
+
+.place {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    left: -10px;
+    top: -10px;
+    border: 1px solid blue;
+    background: red;
+    color: yellow;
+}
+
+.a_hover {
+    color: #555 !important;
+}
+
+.clearfix .ant-upload-list-picture-card .ant-upload-list-item {
+    height: 100px !important;
+}
+
+.clearfix .ant-upload-list {
+    min-height: 230px;
+    overflow: auto;
+    max-height: 280px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px #fcfcfc;
+}
+
+.upload_img .ant-modal-footer {
+    display: none;
+}
+
+.clearfix .ant-upload-select-picture-card {
+    width: 1em;
+    height: 1em;
+    float: none !important;
+    margin: 2em auto;
+}
+.btnn {
+    margin: 0em 0em 1em 16em !important;
+    float: none !important;
+    width: 5em !important;
+    height: 2rem !important;
+}
+
+.ant-select-auto-complete.ant-select .ant-input {
+    border: 0px !important;
+}
+
+#canvas_1,
+#canvas_2,
+#canvas_3 {
+    width: 100% !important;
+}
+
+.cursor_point {
+    cursor: pointer;
+}
+
+.booking_view .ant-card-body {
+    width: 100vw;
+}
+
+.booking_view .ant-card-head {
+    width: 100vw;
+}
+
+.booking_view_showdow {
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px 0px;
+}
+
+.img_fit {
+    object-fit: contain;
+}
+
+.img_cover {
+    vertical-align: middle;
+    border-style: none;
+    object-fit: cover;
+}
+
+.max_height_25 {
+    max-height: 25em;
+}
+
+.certain-category-search.ant-select-auto-complete .ant-input-affix-wrapper .ant-input-suffix {
+    right: 12px;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item-group-title {
+    color: #666;
+    font-weight: bold;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item-group {
+    border-bottom: 1px solid #f6f6f6;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item {
+    padding-left: 16px;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item.show-all {
+    text-align: center;
+    cursor: default;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu {
+    max-height: 300px;
+}
+
+.certain-search-item-count {
+    position: absolute;
+    color: #999;
+    right: 16px;
+}
+
+.certain-category-search.ant-select-focused .certain-category-icon {
+    color: #07cb79;
+}
+
+.avatar_shadow {
+    box-shadow: 0px 0px 0px 3px #28a745;
+}
+
+span.ant-form-item-children.d-block {
+    display: block;
+}
+.map_modal {
+    min-height: 40vh;
+    overflow: auto;
+    border: 1px solid #beefd9;
+}
+.maps_modal {
+    min-height: 30vh;
+    overflow: auto;
+    border: 1px solid #beefd9;
+}
+.maping .ant-modal-footer {
+    padding: 40px 25px;
+    text-align: center;
+}
+
+.no_color {
+    color: #292931 !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .description_page .filler {
+        background: rgba(197, 197, 197, 0.1) !important;
+        border: 0;
+        height: 0px;
+        cursor: pointer;
+        line-height: 2.4;
+        color: #272727;
+        border-radius: 10px;
+        margin-right: 10px;
+        text-align: left;
+        position: relative;
+        top: 0px;
+        /* font-size: 2em; */
+        padding: 0px 15px;
+        margin-bottom: 15px;
+        display: inline-table;
+    }
+    .dynamic_description {
+        font-size: 10px;
+        padding: 0px 25px;
+    }
+    .description_page .location_btn {
+        background: rgba(197, 197, 197, 0.1) !important;
+        border: 0 !important;
+        height: 44px;
+        width: 100% !important;
+        line-height: 1;
+        font-size: 10px;
+        color: #272727;
+        border-radius: 10px;
+        margin-right: 10px;
+        text-align: left;
+        margin: 13px 0px;
+        overflow: hidden;
+    }
+    
+    
+}
+
+@media only screen and (min-width: 900px) {
+    .otp_align {
+        margin-left: 85px;
+    }
+}
+
+.ant-list-bordered .ant-list-item {
+    padding-right: 0px !important;
+    padding-left: 8px !important;
+}
+
+// .dynamic_description label{
+//     display: contents;
+// }
+
+.ant-timeline-item-head-green {
+    color: #06cb79;
+    border-color: #06cb79 !important;
+}
+
+.ant-timeline-item-head {
+    border: 3px solid transparent;
+}
+.ant-timeline-item-tail {
+    border-left: 2px solid #b7e8d4;
+}
+.upload_content .ant-upload-list.ant-upload-list-picture-card:after {
+    content: "Click + to add images";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    height: 90%;
+    position: absolute;
+}
+.ant-upload-list.ant-upload-list-picture-card {
+    position: relative;
+}
+
+.primary_error {
+    color: red;
+}
+
+.job_description.job_description {
+    background-color: #eaeaea70;
+    padding: 1em;
+}
+
+.image-gallery-thumbnails-wrapper {
+    padding: 30px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .main_frame {
+        margin: -8em 1em 0em 1em;
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "Invalid Password":"Invalid Password",
+    "Invalid Email":"Invalid Email",
+    "Job Reminder":"Job Reminder",
+    "your next job almost ready .. ":"your next job almost ready .. ",
+"update success":"update success",
+"update failed":"update failed",
+"Rating Update Successfully":"Rating Update Successfully",
+"Rating Update Failed":"Rating Update Failed",
+"payout success":"payout success",
+"payout failed":"payout failed",
+"Data added":"Data added",
+"Data Insert Failed":"Data Insert Failed",
+"Update Process Success":"Update Process Success",
+"Update Process Failed":"Update Process Failed",
+"This category can`t delete because may be under some more sub_category":"This category can`t delete because may be under some more sub_category ",
+"This category can`t delete because may be  some more Provider chosse this category":"This category can`t delete because may be  some more Provider chosse this category ",
+"Delete Process Success":"Delete Process Success",
+"Delete Process Failed":"Delete Process Failed",
+"This category can`t delete because may be  some more Provider chosse this category ":"This category can`t delete because may be  some more Provider chosse this category "
+}

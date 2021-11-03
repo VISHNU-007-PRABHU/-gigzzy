@@ -1,0 +1,35 @@
+.admin_login_card {
+  width: 38rem;
+  margin-bottom: 1em !important;
+  margin: auto !important;
+  margin-top: 26em !important;
+  .login_avatar_layout {
+    margin-top: -7em;
+    .login_avatar {
+      margin: auto;
+      background-color: white;
+      color: #5e72e4;
+      font-size: 5em !important;
+    }
+  }
+  .login_title {
+    font-size: 2em;
+  }
+  .input {
+    margin: 1em 0em;
+  }
+}
+
+.header{
+  background:white !important;
+  padding: 0px;
+  height: 5em !important;
+}
+.logo_img{
+  width: 9em;
+}
+
+.user_select {
+  user-select: none;
+}
+

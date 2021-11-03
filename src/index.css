@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  font-family: "BalooTamma2", cursive !important;
+  -webkit-font-smoothing: "BalooTamma2", cursive !important;
+  -moz-osx-font-smoothing: "BalooTamma2", cursive !important;
+}
+
+code {
+  font-family: "BalooTamma2" !important;
+}
+
+.ant-btn-primary {
+  color: #fff;
+  background-color: #07cb79 !important;
+  border-color: #07cb79 !important;
+}
